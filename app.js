@@ -27,7 +27,7 @@ app.use(session({
 app.use(passport.initialize());
 app.use(passport.session());
 
-mongoose.connect("mongodb://localhost:27017/secretsDB", {useNewUrlParser: true});
+mongoose.connect("mongodb+srv://Andigrec:<MongoDiBiPassword1>@cluster0.mppkv.mongodb.net/secretsDB?retryWrites=true&w=majority", {useNewUrlParser: true});
 
 const userSchema = new mongoose.Schema ({
   email: String,
@@ -190,9 +190,11 @@ app.post("/login", function(req, res){
 
 });
 
-
-
+let port = process.env.PORT;
+if (port == null || port == "") {
+  port = 3000;
+}
 
 app.listen(3000, function(){
-  console.log("Server started on port 3000.");
+  console.log("Server started succesfully.");
 });
