@@ -9,6 +9,7 @@ const passportLocalMongoose = require("passport-local-mongoose");
 const GoogleStrategy = require("passport-google-oauth20").Strategy;
 const FacebookStrategy = require("passport-facebook").Strategy;
 const findOrCreate = require("mongoose-findorcreate");
+const dotenv=require('dotenv');
 
 const app = express();
 
@@ -27,7 +28,7 @@ app.use(session({
 app.use(passport.initialize());
 app.use(passport.session());
 
-mongoose.connect("mongodb://localhost:27017/secretsDB", {useNewUrlParser: true});
+mongoose.connect("mongodb+srv://Andigrec:Test123@cluster0.mppkv.mongodb.net/secretsDB?retryWrites=true&w=majority", {useNewUrlParser: true});
 
 const userSchema = new mongoose.Schema ({
   email: String,
